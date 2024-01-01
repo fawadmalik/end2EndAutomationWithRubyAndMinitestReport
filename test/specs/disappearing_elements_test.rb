@@ -17,7 +17,7 @@ class DisappearingElementsTest < Minitest::Test
       break unless current_elements.size == initial_elements.size
     end
 
-    assert_operator driver.find_elements(:css, '.example li').size, :<, initial_elements.size,
+    assert_operator driver.find_elements(:css, '.example li').size, :!=, initial_elements.size,
                     'Number of elements did not change after refreshing'
   ensure
     driver.quit
