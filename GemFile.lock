@@ -9,6 +9,7 @@ GEM
       builder
       minitest (>= 5.0)
       ruby-progressbar
+    rake (13.1.0)
     rexml (3.2.6)
     ruby-progressbar (1.13.0)
     rubyzip (2.3.2)
@@ -24,6 +25,7 @@ PLATFORMS
 DEPENDENCIES
   minitest
   minitest-reporters
+  rake
   selenium-webdriver
 
 BUNDLED WITH

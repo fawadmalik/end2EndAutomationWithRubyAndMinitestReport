@@ -4,7 +4,7 @@ require 'minitest/reporters'
 # Configure Minitest to use the JUnit reporter
 # Minitest::Reporters.use! Minitest::Reporters::HtmlReporter.new(reports_dir: 'reports')
 html_reporter = Minitest::Reporters::HtmlReporter.new
-Minitest::Reporters.use! [Minitest::Reporters::SpecReporter.new, html_reporter]
+Minitest::Reporters.use! [html_reporter]
 
 # Custom Minitest::Test class to include setup and teardown methods
 # class Minitest::Test
