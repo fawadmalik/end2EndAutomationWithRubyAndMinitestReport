@@ -2,7 +2,7 @@
 * Ensure ruby is installed :)\
   run command:
   ```ruby -v ```\
-  if you get an error instead of version information, you need to inistall ruby.\
+  if you get an error instead of version information, you need to install ruby.\
   Easist way is using rubyinstaller from here: https://rubyinstaller.org/ 
 
 * clone this repository
