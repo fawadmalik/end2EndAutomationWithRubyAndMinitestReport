@@ -10,10 +10,10 @@ Tags: “End-to-End testing automation“, “Browser automation”, “Ruby”,
 [General Approach]
 
 
-Web applications use a web browser to launch an application or game. We need to build a virtual user that can use the browser application just like you or I would. My approach involves using the following tools:
-browser control tool "Selenium WebDriver", to impersonate a real life user.
+Web applications use a web browser to launch an application or game. In order to test that app or game in the browser we need to build a virtual user that can use the browser application just like you or I would. My approach involves using the following Ruby tools:
+Browser control tool "Selenium WebDriver", to impersonate a real life user.
 Ruby programming language to tell the Selenium WebDriver what actions to do
-Minitest testing framework describe the browser actions, which will form the tests that for our web app
+Minitest testing framework to describe the browser actions, which will form the tests that are for our web app
 Minitest-Reporters to make pretty printed reports of minitest results
 Rake to use one liner commands in order to run one or many tests and any other automation tasks. It will work as the command center console of the framework
 Let me break down the roles of each tool
@@ -23,30 +23,47 @@ Let me break down the roles of each tool
 
 "Selenium WebDriver: This tool allows us to automate actions in the browser by impersonating the actions of a real user. It's the driving force behind your interactions with web applications and web pages in Chrome, Firefox, Safari, and others. It supports being used from multiple programming languages and this flexibility allows programmers to choose the language they are most comfortable with. I will use the Ruby Programming language.
 "Ruby: I chose Ruby because it seemed that I'll be able to start running code quickly and ruby code looked comparatively more readable compared to Java. I felt that I should be able to extend existing Ruby code and start writing my own code. Also I found enough Supportive Community and Documentation to make me feel comfortable in starting programming.
+
+[Tools and Libraries]
 "Minitest: I chose minitest because it appears to be easy to set up and integrate with Ruby. From examples I felt confident in writing my basic tests quickly.
 Minitest-Reporters: I added this after running a test for the first time. All I saw on the screen was a green dot showing that the test passed. Minitest-reporters is a separate gem ( extension pack ) that enhances the reporting capabilities of Minitest “dots”
 "Rake: Rake allows you to define and automate tasks related to your testing framework, such as running groups of test called test-suites. Also it uses Ruby syntax so I won't have to learn YASL (yet-another-scripting-language)
 
 [Inspirational Anecdote]
-"So far it seems that this browser automation thing is beginning to look like having a robot sidekick – it never gets tired, never complains, and always follows instructions. If only our pets were as obedient! Or could impersonate us on the internet browser . . . nottt"
+"So far it seems that this browser automation thing is beginning to look like having a robot sidekick – it will never get tired, never complain, and always follow instructions. If only our pets were as obedient! Or could impersonate us on the internet browser"
+So let’s put this framework together.
 
+[Coding demo]
+Since I’m using rake to automate running of the tests, by convention, such code goes into a file called "Rakefile". Let's create that file:I'll add the name of this file as a comment and save it
 
+Rake
+Now let’s tell rake to run our testsRake has the concept of a task to do such thingsBefore I can start using code for a task Ruby requires me to load a gem for testtask.The code to do that is:require 'rake/testtask'
 
+Rake::TestTask.new do |webtesttask|
+Now I can use test tasks in Rake. 
+The `Rake::TestTask`, is part of the `rake/testtask` library gem.
+I will start by creating a new testtaskRake::TestTask.newand call it webtesttaskRake::TestTask.new do |webtesttask|
 
-[Inspirational Anecdote]
-Remember, in the world of automation, every line of code you write is a step toward a more efficient and reliable testing process. Embrace the power of automation, and let your tests be the guardians of quality!
+webtesttask << 'test'
+Now let’s tell webtesttask where to find our tests, which are under the directory named ‘test’
+How? Add it to the list of directories that webtesttask looks into for doing it’s tasks
+Ruby uses the left shift operator, <<, to add things to listsso 
+Rake::TestTask.new do |webtesttask|	webtesttask << 'test'
 
-[Inspirational Anecdote]
-So far it feels like test automation is not just about saving time—it's about empowering developers and testers to focus on creativity and innovation. Yeah, leave the grunt work for the automation framework while you create awesome web apps.
+webtesttask.pattern = 'test/specs/**/*_test.rb
+Let’s tell webtesttask all the files to include for testing Let’s use pattern matching  like so: test/specs/**/*_test.rb
+under the test directory look for a ‘specs’ subdirectory and then a further subdirectory by any name, using a directory wildcard  **, then any files ending with _test.rb using a filename wildcard *_test.rb
+set the file pattern in webtesttask: 
+webtesttask.pattern = 'test/specs/**/*_test.rb
 
-[Humorous Quips]
-Why do programmers prefer automation? Because it's the only time they enjoy watching something work on repeat without errors!
+Let’s set a few more options in webtesttask to output as much information as available about the tests being run.
+webtesttask.verbose = true
+If there are any potential issues or warnings related to the tests, tell webtesttask to show them
+webtesttask.warning = true
 
-[Humorous Quips]
-Automation: where robots do the heavy lifting, and we get to enjoy our coffee a bit longer! Who said testing can't have a sense of humor? Cheers to error-free code and automated success!
+In summary, these lines configure a Rake task for running tests using the `Rake::TestTask` class. The task is set up to look for test files in the 'test/specs/' directory, follow a specific naming pattern, and provide verbose output and warnings during the test run.
 
 [Closing]
 So! automation not only helps save time, it helps raise the quality and reliability of your applications. I hope you've gained insights into the seamless collaboration of Selenium, Ruby, Rake, Minitest, and Minitest-Reporters in creating a testing framework for web applications. 
 That's a wrap for our end-to-end web application testing adventure! If you enjoyed this journey, don't forget to like, subscribe, and hit that notification bell. 
-Happy coding, and may your tests be evergreen! Until next time, stay automated!
-Happy testing, and may your code always run flawlessly!
+Happy coding, and Until next time, stay automated!
