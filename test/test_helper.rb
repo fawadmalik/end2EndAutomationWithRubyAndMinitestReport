@@ -1,8 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/reporters'
 
-# Configure Minitest to use the JUnit reporter
-# Minitest::Reporters.use! Minitest::Reporters::HtmlReporter.new(reports_dir: 'reports')
 html_reporter = Minitest::Reporters::HtmlReporter.new
 Minitest::Reporters.use! [html_reporter]
 

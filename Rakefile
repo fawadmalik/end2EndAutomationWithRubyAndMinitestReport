@@ -4,10 +4,10 @@ require 'rake/testtask'
 
 task default: [:test]
 
-Rake::TestTask.new do |t|
-  t.libs << 'test'
-  t.pattern = 'test/specs/**/*_test.rb'
-  t.verbose = true
-  t.warning = true
+Rake::TestTask.new do |webtesttask|
+  webtesttask.libs << 'test'
+  webtesttask.pattern = 'test/specs/**/*_test.rb'
+  webtesttask.verbose = true
+  webtesttask.warning = true
 end
 
