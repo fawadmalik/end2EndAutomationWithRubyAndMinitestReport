@@ -1,2 +1,5 @@
-html_reports
-.idea/
+/.idea/*
+/html_reports/
+webdriver.log
+/test/html_reports/
+/*.iml
