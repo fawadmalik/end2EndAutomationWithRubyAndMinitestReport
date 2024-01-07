@@ -46,6 +46,12 @@ The Rakefile is configured to run all test files matching the pattern `'test/spe
 
 Note: Ensure that your individual test files follow the naming convention of ending with `_test.rb` in the `test/specs/` folder.
 
+Since this project uses minitest-reporters and minitest-reporters library uses default reporter.
+To get more detailed test output, use rake MINITEST_REPORTER=SpecReporter.
+With this setting, output tests is sent to stdout as well.
+This project leverages html_reports so one way to set the reporter as well as the output directory
+of the html reports is:
+
 * Set these two environment variables
 * MINITEST_HTML_REPORTS_DIR, MINITEST_REPORTER
 For Windows:
