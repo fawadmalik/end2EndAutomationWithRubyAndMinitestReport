@@ -40,8 +40,14 @@ require_relative '../test_helper'
 
 ```
 
-   This will execute all tests and generate an HTML report in the `html_reports` folder.
+This will execute all tests and generate an HTML report in the `html_reports` folder.
 
 The Rakefile is configured to run all test files matching the pattern `'test/specs/**/*_test.rb'` and generate a combined HTML report at `html_reports/index.html`. 
 
 Note: Ensure that your individual test files follow the naming convention of ending with `_test.rb` in the `test/specs/` folder.
+
+* Set these two environment variables
+* MINITEST_HTML_REPORTS_DIR, MINITEST_REPORTER
+For Windows:
+  MINITEST_HTML_REPORTS_DIR=html_reports
+  MINITEST_REPORTER=HtmlReporter
